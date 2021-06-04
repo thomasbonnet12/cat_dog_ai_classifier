@@ -98,18 +98,38 @@ class _HomeState extends State<Home> {
                         child: Column(
                           children: [
                             Image.asset('assets/cat_dog_icon.png'),
-                            SizedBox(height: 30),
+                            SizedBox(height: 10),
                           ],
                         ),
                       )
-                    : Container(),
+                    : Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 250,
+                              child: Image.file(_image),
+                            ),
+                            SizedBox(height: 20),
+                            _output != null
+                                ? Text(
+                                    'Hurray !! We found out this is a ${_output[0]['label']}',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15),
+                                  )
+                                : Container(),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        pickImage();
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width - 150,
                         alignment: Alignment.center,
@@ -126,7 +146,9 @@ class _HomeState extends State<Home> {
                     ),
                     SizedBox(height: 12),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        pickGalleryImage();
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width - 150,
                         alignment: Alignment.center,
