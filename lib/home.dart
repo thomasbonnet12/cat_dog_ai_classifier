@@ -64,6 +64,7 @@ class _HomeState extends State<Home> {
     detectImage(_image);
   }
 
+//
   @override
   Widget build(BuildContext context) {
     return Scaffold(
